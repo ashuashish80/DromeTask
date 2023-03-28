@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block body %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">phone</th>
+        <th scope="col">email</th>
+        <th scope="col">Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in bookings %}
+    <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.phone}}</td>
+        <td>{{i.email}}</td>
+        <td>
+            <form method='post' action="{% url 'update' i.id %} ">{% csrf_token %} 
+                <input type="submit" class="btn btn-danger" value="update">
+            </form>
+        <td>
+            <form method='post' action="{% url 'delete' i.id %} ">{% csrf_token %} 
+                <input type="submit" class="btn btn-danger" value="delete">
+            </form>
+            
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock body %}

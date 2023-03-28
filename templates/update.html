@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+
+
+<form method = 'post' action = "{% url 'save' Bookings.id %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="Name" class="form-label">Customer Name</label>
+        <input type="text" value="{{Bookings.name}}" class="form-control" id="name" name ='name' aria-describedby="emailHelp">
+        
+        <label for="phone" class="form-label">Customer Contact Number</label>
+        <input type="number" value="{{Bookings.phone}}" class="form-control" id="phone" name='phone' aria-describedby="emailHelp">
+        
+        <label for="Name" class="form-label">Email Addres</label>
+        <input type="email" value="{{Bookings.email}}" class="form-control" id="name" name='email' aria-describedby="emailHelp">
+        
+        <button type="submit" class="btn btn-success">Update Data</button>
+    </form>
+    
+
+{% endblock body %}
